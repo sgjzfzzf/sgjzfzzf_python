@@ -103,6 +103,6 @@ def run_spider():
     '''启动器'''
     all_pages_src = return_all_pages_src(url_home)
     all_pages_content = return_all_pages_content(all_pages_src)
-    print(all_pages_content)
     page_src_storage(all_pages_content)
+    print("运行完成!")
 
