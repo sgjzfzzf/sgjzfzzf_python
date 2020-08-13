@@ -54,14 +54,12 @@ def return_all_pages_content(all_post_pages):
     for every_item in all_post_pages:
         name = every_item['module_name']
         print('正在解析模块:\t{}'.format(name))
-        for every_url_origin in every_item['content']:
-            every_url_name = every_url_origin[1]
-            every_url_origin = every_url_origin[0]
+        for (every_url_origin, every_url_name) in every_item['content']:
             print('\t正在解析"{}"模块,帖子:\t{}'.format(name, every_url_name))
             k = 0
+            post_info = dict()
             while True:
                 k += 1
-                post_info = dict()
                 title_re_expression = r'<a href="/t/topic/\d+?">([\s\S]+?)</a>'
                 every_url = every_url_origin + "?page=" + str(k)
                 every_url_resp = requests.get(every_url, headers=headers)
@@ -71,7 +69,7 @@ def return_all_pages_content(all_post_pages):
                 if len(goal_title_tags) == 0:
                     break
                 goal_title_tag = goal_title_tags[0]
-                post_info['title'] = re.findall(title_re_expression, str(goal_title_tag))
+                post_info['title'] = re.findall(title_re_expression, str(goal_title_tag))[0]
                 goal_ques_tags = every_url_soup.find_all(name="div", class_='post', itemprop='articleBody')
                 if len(goal_ques_tags) == 0:
                     break
@@ -105,5 +103,6 @@ def run_spider():
     '''启动器'''
     all_pages_src = return_all_pages_src(url_home)
     all_pages_content = return_all_pages_content(all_pages_src)
-    print(all_pages_content)
     page_src_storage(all_pages_content)
+    print("运行完成!")
+
