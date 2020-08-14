@@ -69,6 +69,7 @@ class DevSJTUSpider:
             json.dump(self.all_post_content, f)
 
     def run_spider(self):
+        '''爬虫启动器'''
         print("开始解析主页面......")
         self.return_all_pages_src()
         print("主页面解析完成，开始解析各篇帖子......")
