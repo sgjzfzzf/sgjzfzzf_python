@@ -1,5 +1,5 @@
 '''
-项目：SinoUniSpider，新浪官微的爬虫
+项目：SinaUniSpider，新浪官微的爬虫
 作者：sgjzfzzf
 完成时间：2020.8.16
 '''
@@ -35,7 +35,7 @@ class SpiderThread(threading.Thread):
         SpiderThread.semaphore.release()
 
 
-class SinoSpider:
+class SinaSpider:
     '''爬虫类，初始化时传入两个参数，第一个是爬取官微的名称，第二个是用户的唯一表识uid，需要手动进入微博查看'''
 
     def __init__(self, name, uid):
