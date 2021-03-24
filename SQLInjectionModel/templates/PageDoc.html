@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="JSdoc.js"></script>
+</head>
+
+<body>
+    {% if infos %}
+        {% for info in infos %}
+            ID = {{info.0}}, Name = {{info.1}}, Private Key:{{info.2}}<br>
+        {% endfor %}
+    {% endif %}
+    <form method="GET">
+        <label>ID:<input type="text" name="id"></label><br>
+        <label>Name:<input type="text" name="name"></label><br>
+        <input type="submit" value="submit">
+    </form>
+</body>
+
+</html>
